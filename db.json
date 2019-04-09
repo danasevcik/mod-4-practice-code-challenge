@@ -1,0 +1,39 @@
+{
+  "colors": [
+    {
+      "id": 1,
+      "name": "red",
+      "img": "https://www.abc.net.au/radionational/image/6289622-4x3-340x255.png"
+    },
+    {
+      "id": 2,
+      "name": "orange",
+      "img": "https://cdn.shopify.com/s/files/1/2617/9116/products/2016-10-startlingorange_2000x.png?v=1548283618"
+    },
+    {
+      "id": 3,
+      "name": "yellow",
+      "img": "https://www.onlinepsychologydegree.info/wp-content/uploads/2017/11/brightyellow-paintchip.jpg"
+    },
+    {
+      "id": 4,
+      "name": "green",
+      "img": "https://images-na.ssl-images-amazon.com/images/I/41FAM8Tx18L._SX466_.jpg"
+    },
+    {
+      "id": 5,
+      "name": "blue",
+      "img": "https://c2.staticflickr.com/8/7113/6861941612_d5e9a05a37.jpg"
+    },
+    {
+      "id": 6,
+      "name": "indigo",
+      "img": "https://www.macmillandictionary.com/external/slideshow/full/Indigo_full.png"
+    },
+    {
+      "id": 7,
+      "name": "violet",
+      "img": "https://cdn11.bigcommerce.com/s-491hew/images/stencil/original/products/695/1790/O651-040__48276.1479248278.jpg?c=2"
+    }
+  ]
+}
