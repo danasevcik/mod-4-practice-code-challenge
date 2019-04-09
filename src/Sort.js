@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// Click radio button and send up to App
 class Sort extends Component {
   render() {
     return (

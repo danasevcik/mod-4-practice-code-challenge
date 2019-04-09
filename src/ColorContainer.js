@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ColorCard from './ColorCard';
 
-// iterate through colors and render color card
-// send favorite props to tell card which button to render
+// Renders ColorCards with favorite prop
 class ColorContainer extends Component {
 
   render() {

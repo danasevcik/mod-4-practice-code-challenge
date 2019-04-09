@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// Send click handler up to App
 class FavoriteButton extends Component {
 
   handleLike = () => {

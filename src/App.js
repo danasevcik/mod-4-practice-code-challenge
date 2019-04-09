@@ -3,15 +3,18 @@ import './AppCss.css';
 import ColorContainer from './ColorContainer'
 import FavoriteContainer from './FavoriteContainer'
 import Sort from './Sort'
+import Search from './Search'
 
 // Holds state for colors and favorites
 // Holds color container component and favorite container component
+// Handles like, dislike, sort and search
 
 class App extends Component {
   state={
     colors: [],
     favorites: [],
-    roygbiv: []
+    roygbiv: [],
+    searchTerm: ""
   }
 
   componentDidMount() {
@@ -24,14 +27,12 @@ class App extends Component {
 
   handleLike = (colorObj) => {
     if (!this.state.favorites.includes(colorObj)) {
-      console.log('not there');
       let newFaves = [...this.state.favorites, colorObj]
-      this.setState({favorites: newFaves}, () => console.log(this.state.favorites))
+      this.setState({favorites: newFaves})
     }
   }
 
   handleDislike = (colorObj) => {
-    console.log(colorObj);
     let newFaves = this.state.favorites.filter(color => {
       return color.id !== colorObj.id
     })
@@ -39,7 +40,6 @@ class App extends Component {
   }
 
   handleSort = (sortParam) => {
-    console.log(sortParam);
     if (sortParam === "Alphabetically") {
       let sortedColors = [...this.state.colors].sort((a,b) => {
           return a.name.localeCompare(b.name)
@@ -47,17 +47,24 @@ class App extends Component {
       this.setState({colors: sortedColors})
     }
     else if (sortParam === "ROYGBIV") {
-      console.log(this.state.roygbiv);
       this.setState({colors: [...this.state.roygbiv]})
     }
   }
 
+  handleSearch = (search) => {
+    this.setState({searchTerm: search})
+  }
+
   render() {
+    let searchColors = this.state.colors.filter(color => {
+      return color.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    })
     return (
       <div>
         <h1>THE COLOR SWATCH APP<span role="img" aria-label="Artist Palette">🎨</span></h1>
         <Sort handleSort={this.handleSort}/>
-        <ColorContainer colors={this.state.colors} handleLike={this.handleLike}/>
+        <Search handleSearch={this.handleSearch}/>
+        <ColorContainer colors={searchColors} handleLike={this.handleLike}/>
         <FavoriteContainer style={{float: 'right'}} favorites={this.state.favorites} handleDislike={this.handleDislike}/>
       </div>
     );
