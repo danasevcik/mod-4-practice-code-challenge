@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './AppCss.css';
 import ColorContainer from './ColorContainer'
 import FavoriteContainer from './FavoriteContainer'
+import Sort from './Sort'
 
 // Holds state for colors and favorites
 // Holds color container component and favorite container component
@@ -9,14 +10,15 @@ import FavoriteContainer from './FavoriteContainer'
 class App extends Component {
   state={
     colors: [],
-    favorites: []
+    favorites: [],
+    roygbiv: []
   }
 
   componentDidMount() {
     fetch('http://localhost:3000/colors')
     .then(resp => resp.json())
     .then(colors => (
-      this.setState({colors})
+      this.setState({colors: colors, roygbiv: colors})
     ))
   }
 
@@ -36,10 +38,25 @@ class App extends Component {
     this.setState({favorites: newFaves})
   }
 
+  handleSort = (sortParam) => {
+    console.log(sortParam);
+    if (sortParam === "Alphabetically") {
+      let sortedColors = [...this.state.colors].sort((a,b) => {
+          return a.name.localeCompare(b.name)
+      })
+      this.setState({colors: sortedColors})
+    }
+    else if (sortParam === "ROYGBIV") {
+      console.log(this.state.roygbiv);
+      this.setState({colors: [...this.state.roygbiv]})
+    }
+  }
+
   render() {
     return (
       <div>
         <h1>THE COLOR SWATCH APP<span role="img" aria-label="Artist Palette">🎨</span></h1>
+        <Sort handleSort={this.handleSort}/>
         <ColorContainer colors={this.state.colors} handleLike={this.handleLike}/>
         <FavoriteContainer style={{float: 'right'}} favorites={this.state.favorites} handleDislike={this.handleDislike}/>
       </div>
